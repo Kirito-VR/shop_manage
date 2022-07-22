@@ -1,12 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div class="index">
+    <nav>
+      <router-link to="/">Login</router-link>
+    </nav>
+
+  </div>
   <router-view/>
+  <LoginView ></LoginView>
+  <foot-view></foot-view>
 </template>
 
+<script>
+  // import LoginView from "./views/LoginView";
+  import footView from "./views/footView";
+
+  export default {
+    name:"App",
+    components:{
+      // LoginView,
+      footView
+    }
+  }
+</script>
+
 <style lang="scss">
+  * {
+    margin: 0;
+    padding: 0;
+  }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,4 +48,7 @@ nav {
     }
   }
 }
+  .index{
+    display: none;
+  }
 </style>
