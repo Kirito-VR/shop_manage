@@ -1,18 +1,12 @@
 <template>
     <div>
-        
+        疑难解答
     </div>
 </template>
 
 <script>
     export default {
-        name: "OrderInfo",
-        moutd:function () {
-            func()
-        },methods:{
-
-        }
-
+        name: "QA"
     }
 </script>
 

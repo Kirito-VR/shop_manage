@@ -1,17 +1,10 @@
 <template>
-  <div class="index">
-    <nav>
-      <router-link to="/">Login</router-link>
-    </nav>
-
-  </div>
   <router-view/>
-  <LoginView ></LoginView>
   <foot-view></foot-view>
 </template>
 
 <script>
-  // import LoginView from "./views/LoginView";
+
   import footView from "./views/footView";
 
   export default {

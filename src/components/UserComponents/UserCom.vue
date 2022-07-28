@@ -4,7 +4,10 @@
 
 <script>
     export default {
-        name: "UserCom"
+        name: "UserCom",
+        mouted:function () {
+            
+        }
     }
 </script>
 

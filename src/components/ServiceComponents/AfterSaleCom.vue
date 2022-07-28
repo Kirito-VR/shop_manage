@@ -1,18 +1,12 @@
 <template>
     <div>
-        
+        售后服务
     </div>
 </template>
 
 <script>
     export default {
-        name: "OrderInfo",
-        moutd:function () {
-            func()
-        },methods:{
-
-        }
-
+        name: "AfterSaleCom"
     }
 </script>
 

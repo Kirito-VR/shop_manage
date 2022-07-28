@@ -1,18 +1,13 @@
 <template>
     <div>
-        
+        这是商品服务
+
     </div>
 </template>
 
 <script>
     export default {
-        name: "OrderInfo",
-        moutd:function () {
-            func()
-        },methods:{
-
-        }
-
+        name: "GoodService"
     }
 </script>
 

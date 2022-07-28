@@ -1,29 +1,62 @@
 <template>
     <div class="Sign_com">
         <div>
-            <label for="username">账号:</label><input id="username" type="text" :value="SignData.username"/><br>
-            <label for="password">密码:</label> <input id="password" type="text" :value="SignData.password"/><br>
+            <label for="username">账号:</label><input id="username" type="text" v-model="SignData.username"/><br>
+            <label for="password">密码:</label> <input id="password" type="text" v-model="SignData.password"/><br>
             <input @click="Login_fun" class="Login_sub" type="submit"  value="登陆"/>
         </div>
     </div>
 </template>
 
 <script>
-    import router from "../../router";
+
 
     export default {
         name: "SignCom",
         data(){
             return {
                 SignData:{
-                    username:"",
-                    password:""
-                }
+                    username:"liwei",
+                    password:"lw1234"
+                },
             }
         },
         methods:{
             Login_fun(){
-               router.push('/home');
+                console.log(this.SignData.username);
+
+                this.$api.login.login("/login",this.SignData)
+                    .then(res=>{
+                        console.log("返回结果",res.token);
+                        sessionStorage.setItem("token",res.token);
+                        this.$api.menu.findNavTree("menu/findNavTree",{"userName":this.SignData.username})
+                            .then(res=>{
+                                console.log("菜单树"+res);
+                                this.$store.dispatch({
+                                    type:"setNavTree",
+                                    data:res
+                                });
+
+                                return new Promise((resolve,reject) =>{
+                                    let a =false;
+                                    resolve(this.SignData.username);
+                                    if(a){
+                                        reject("出错了");
+                                    }
+                                })
+                            }).then(res=>{
+                            console.log(res);
+                            this.$api.sys_user.findPermissions("user/findPermissions",{"userName":res})
+                        });
+                        this.$router.push('/home');
+
+                    }).catch(err=>{
+                    console.log(err);
+                    this.$router.push("/");
+                });
+
+
+
             }
         }
     }
