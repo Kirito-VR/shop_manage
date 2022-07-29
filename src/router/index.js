@@ -8,6 +8,11 @@ const routes = [
     component:()=>import("../views/HomeView.vue"),
     children:[
       {
+        path:'App',
+        name:'App',
+        component:()=>import("../components/HomeComponents/AppCom.vue")
+      },
+      {
         path:'Good',
         name:'Good',
         component:()=>import("../components/GoodComponents/GoodCom.vue")
@@ -63,6 +68,7 @@ const routes = [
     name:'Test',
     component:()=>import("../views/TestView.vue"),
     children:[
+
       {
         path:'Good',
         name:'GoodT',
