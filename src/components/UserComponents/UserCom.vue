@@ -5,8 +5,8 @@
 <script>
     export default {
         name: "UserCom",
-        mouted:function () {
-            
+        mounted:function () {
+            console.log("jjljk")
         }
     }
 </script>
