@@ -22,37 +22,43 @@
         data(){
             return {
                 siderList:[
-                    {id:1,name:"Good",title:"商品管理",
+                    {
+                        id:1,name:"/home/App",title:"首页",
+                        style:{display:"none"},
+                        child:[{id:14,name:"/home/App",title:"首页"}],
+                        isShow:false
+                    },
+                    {id:2,name:"Good",title:"商品管理",
                         style:{display:"none"},
                         child:[
-                            {id:6,name:"/home/Good",title:"商品管理"}
+                            {id:7,name:"/home/Good",title:"商品管理"}
                         ],
                         isShow:false
                     },
-                    {id:2,name:"Order",title:"订单管理",
+                    {id:3,name:"Order",title:"订单管理",
                         style:{display:"none"},
                         child:[
-                            {id:7,name:"/home/Order",title:"订单管理"}
+                            {id:8,name:"/home/Order",title:"订单管理"}
                         ],
                         isShow:false},
-                    {id:3,name:"User",title:"用户管理",
+                    {id:4,name:"User",title:"用户管理",
                         style:{display:"none"},
                         child:[
-                            {id:8,name:"/home/User",title:"用户管理"}
+                            {id:9,name:"/home/User",title:"用户管理"}
                         ],
                         isShow:false},
-                    {id:4,name:"Info",title:"个人中心",
+                    {id:5,name:"Info",title:"个人中心",
                         style:{display:"none"},
                         child:[
-                            {id:9,name:"/home/Info",title:"个人中心"}
+                            {id:10,name:"/home/Info",title:"个人中心"}
                         ],
                         isShow:false},
-                    {id:5,name:"Serve",title:"服务中心",
+                    {id:6,name:"Serve",title:"服务中心",
                         style:{display:"none"},
                         child:[
-                            {id:10,name:"/home/AfterServe",title:"售后服务"},
-                            {id:11,name:"/home/GoodServe",title:"商品服务"},
-                            {id:12,name:"/home/QA",title:"疑难解答"}
+                            {id:12,name:"/home/AfterServe",title:"售后服务"},
+                            {id:13,name:"/home/GoodServe",title:"商品服务"},
+                            {id:13,name:"/home/QA",title:"疑难解答"}
                         ],
                         isShow:false},
 

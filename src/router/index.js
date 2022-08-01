@@ -4,9 +4,14 @@ const routes = [
   {
     path:'/home',
     name:'home',
-    redirect:'/home/Good',
+    redirect:'/home/App',
     component:()=>import("../views/HomeView.vue"),
     children:[
+      {
+        path:'App',
+        name:'App',
+        component:()=>import("../components/HomeComponents/AppCom.vue")
+      },
       {
         path:'Good',
         name:'Good',
@@ -63,6 +68,7 @@ const routes = [
     name:'Test',
     component:()=>import("../views/TestView.vue"),
     children:[
+
       {
         path:'Good',
         name:'GoodT',
