@@ -75,7 +75,7 @@
         data() {
           const name = sessionStorage.getItem("ms_username");
           const role = "超级管理员";
-          const user= sessionStorage.getItem("usernum");
+          const user= this.$store.getters.getUserNum;
 
 
           return {
