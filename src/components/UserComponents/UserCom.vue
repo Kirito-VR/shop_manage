@@ -97,7 +97,7 @@ export default {
             setTimeout(() => {
               loading.close();
             }, 1000);
-            // console.log("返回",this.userList);
+            console.log("返回",this.userList);
           }).catch(err=>{//错误信息为设置
         console.log(err);
       });
