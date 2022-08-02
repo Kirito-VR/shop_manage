@@ -1,14 +1,19 @@
 <template>
     <div>
-        
+        123
     </div>
 </template>
 
 <script>
     export default {
         name: "OrderInfo",
-        moutd:function () {
-            func()
+        data(){
+          return{
+            OrderList:[]
+          }
+        },
+        mounted:function () {
+          console.log("111");
         },methods:{
 
         }
