@@ -3,7 +3,7 @@
         <input type="text" placeholder="输入名称查询商品">
         <button >查询</button>
         <button @click="add">新增商品</button>
-        <button>删除商品</button>
+        <button >删除商品</button>
 
   </div>
     <div class="form">
