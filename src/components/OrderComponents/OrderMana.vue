@@ -10,13 +10,13 @@
     <table id="orderTable">
       <caption>订单表</caption>
       <tr>
-        <th><input type="checkbox"></th>
-        <th>订单编号</th>
-        <th>用户编号</th>
-        <th>付款金额</th>
-        <th>交易编号</th>
-        <th>支付状态</th>
-        <th>操作</th>
+        <th style="width: 18px;height: 18px;"><input type="checkbox"></th>
+        <th style="width: 180px;height: 18px;">订单编号</th>
+        <th style="width: 180px;height: 18px;">用户编号</th>
+        <th style="width: 180px;height: 18px;">付款金额</th>
+        <th style="width: 180px;height: 18px;">交易编号</th>
+        <th style="width: 180px;height: 18px;">支付状态</th>
+        <th style="width: 365px;height: 18px;">操作</th>
       </tr>
 
       <tr class="OrderList" v-for="(OrderList,index) in orderList" :key="index">
@@ -34,28 +34,6 @@
         </th>
       </tr>
     </table>
-
-    <!--  修改订单  -->
-    <!--
-        <table id="reviseOrder">
-          <caption>修改订单表</caption>
-          <tr>
-            <th>订单编号</th>
-            <th>用户编号</th>
-            <th>付款金额</th>
-            <th>交易编号</th>
-            <th>支付状态</th>
-          </tr>
-
-          <tr class="OrderList" v-for="(OrderList,index) in orderList" :key="index">
-            <th>{{ OrderList.order_id }}</th>
-            <th>{{ OrderList.order_uid }}</th>
-            <th>{{ OrderList.order_Trademoney }}</th>
-            <th>{{ OrderList.order_Tradeld }}</th>
-            <th>{{ OrderList.status }}</th>
-          </tr>
-        </table>
-    -->
 
     <!--    显示需要修改的权限界面-->
     <div id="modifyTable" style="display: none">
@@ -82,14 +60,15 @@
 
     <!--  显示输入框查询结果表  -->
     <table id="findInputOrderListResult" style="display: none">
+      <br/>
       <caption>查询结果</caption>
       <tr>
         <!--        <th><input type="checkbox"></th>-->
-        <th>订单编号</th>
-        <th>用户编号</th>
-        <th>付款金额</th>
-        <th>交易编号</th>
-        <th>支付状态</th>
+        <th style="width: 304px;height: 18px;">订单编号</th>
+        <th style="width: 304px;height: 18px;">用户编号</th>
+        <th style="width: 304px;height: 18px;">付款金额</th>
+        <th style="width: 304px;height: 18px;">交易编号</th>
+        <th style="width: 304px;height: 18px;">支付状态</th>
       </tr>
 
       <tr class="OrderIdListResult" v-for="(FindOrderIdListResult) in findOrderIdListResult"
@@ -106,15 +85,16 @@
 
     <!--  显示查询订单详情表  -->
     <table id="orderInfoTable" style="display: none">
+      <br/>
       <caption>订单详情表</caption>
       <tr>
-        <th><input type="checkbox"></th>
-        <th>序号</th>
-        <th>商品编号</th>
-        <th>订单编号</th>
-        <th>商品价格</th>
-        <th>商品数量</th>
-        <th>商品名称</th>
+        <th style="width: 18px;height: 18px;"><input type="checkbox"></th>
+        <th style="width: 250px;height: 18px;">序号</th>
+        <th style="width: 250px;height: 18px;">商品编号</th>
+        <th style="width: 250px;height: 18px;">订单编号</th>
+        <th style="width: 250px;height: 18px;">商品价格</th>
+        <th style="width: 250px;height: 18px;">商品数量</th>
+        <th style="width: 250px;height: 18px;">商品名称</th>
       </tr>
 
       <tr class="OrderInfoList" v-for="(OrderInfoList) in orderInfoList" :key="OrderInfoList.id">
@@ -268,6 +248,7 @@ export default {
       document.getElementById("modifyTable").style.display = "none";
     },
   },
+
 }
 </script>
 
@@ -291,18 +272,18 @@ table, th, td {
 #findInputOrderListResult {
   width: 100%;
   background-color: aliceblue;
-  /*text-align: center;*/
+  text-align: center;
 }
 
 #orderInfoTable {
   width: 100%;
   background-color: aliceblue;
-  /*text-align: center;*/
+  text-align: center;
 }
 
-/*tr {
+tr {
   width: 100%;
-}*/
+}
 
 #queryKey {
   left: 310px;
