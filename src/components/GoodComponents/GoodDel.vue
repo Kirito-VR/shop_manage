@@ -1,5 +1,5 @@
 <template>
-  <div class="new" >
+  <div class="del" >
     <label>编号</label><input type="text"  v-model="this.addForm.id" placeholder="商品编号不能为空">
     <br>
     <label>名称</label><input type="text"  v-model="this.addForm.name">
@@ -10,9 +10,9 @@
     <br>
     <label>描述</label><input type="text" v-model="this.addForm.descripe">
     <br>
-    <label>图片</label><input type="file">
+    <label>图片</label><input type="text" v-model="this.addForm.imPath">
     <br>
-    <button class="newAdd" @click="newAdd">确认添加</button>
+    <button class="delInf" @click="delInf">确认删除</button>
     <br>
     <button class="newX" @click="cancel">取消</button>
   </div>
@@ -20,10 +20,9 @@
 
 <script>
 export default {
-  name: "GoodAdd",
+  name: "GoodChan",
   data(){
     return{
-      display:"",
       addForm:{
         id:"",
         name:"",
@@ -32,19 +31,21 @@ export default {
         descripe:"",
         imPath:""
       },
+
     }
   },
+  props:['data']
+  ,
+  computed:{
+
+  },
   methods:{
-    cancel(){
-      this.$parent.add();
-    },
-    newAdd(){
-      console.log("商品信息",this.addForm)
-      this.$api.good.addGoodList('/good/addGoodList',this.addForm)
+    delInf(){
+      this.$api.good.delGoodList('/good/delGoodList',this.addForm)
           .then(res => {
             location. reload();
+            this.$parent.del();
             console.log("添加按钮大成功：",res);
-            this.$parent.add();
             return new Promise((resolve,reject)=>{  //若这里不手动设置一个promise，那么.then返回的就是一个空的（undefind）
               let a=false;
               resolve("马上获取权限");
@@ -52,29 +53,28 @@ export default {
                 reject("出错了");
               }
             })
-
           })
 
     },
+    cancel(){
+      this.$parent.del();
+    },
 
+
+  },
+  mounted() {
+    console.log(this.data);
+    this.addForm = this.$store.getters.getGoodInf[this.data];
   }
 
 }
 </script>
 
 <style scoped>
-.new{
-  width: 250px;
-  height: 330px;
-  background-color: bisque;
+.del{
+  width: 25%;
+  height: 200px;
+  background-color: darkgray;
   float: left;
-}
-.newAdd{
-  position: relative;
-  top: 80px;
-}
-.newX{
-  position: relative;
-  top: 110px;
 }
 </style>

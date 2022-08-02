@@ -9,3 +9,12 @@ export  function getGoodList(url) {
 export  function addGoodList(url,params) {
     return get(url,params);
 }
+export  function delGoodList(url,params) {
+    return get(url,params);
+}
+export  function resGoodList(url,params) {
+    return get(url,params);
+}
+export  function selGoodList(url,params) {
+    return get(url,params);
+}

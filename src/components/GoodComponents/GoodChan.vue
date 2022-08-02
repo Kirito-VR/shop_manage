@@ -1,6 +1,6 @@
 <template>
       <div class="revise" >
-        <label>编号</label><input type="text"  v-model="this.addForm.id" placeholder="商品编号不能为空">
+        <label>编号</label><input type="text"  v-model="this.addForm.id" disabled>
         <br>
         <label>名称</label><input type="text"  v-model="this.addForm.name">
         <br>
@@ -12,7 +12,7 @@
         <br>
         <label>图片</label><input type="text" v-model="this.addForm.imPath">
         <br>
-        <button class="newAdd" @click="newAdd">确认修改</button>
+        <button class="res" @click="res">确认修改</button>
         <br>
         <button class="newX" @click="cancel">取消</button>
       </div>
@@ -24,20 +24,48 @@
       data(){
           return{
             addForm:{
-              id:"",
               name:"",
               price:"",
               stock:"",
               descripe:"",
               imPath:""
             },
+
           }
+      },
+      props:['data']
+      ,
+      computed:{
+
       },
       methods:{
           cancel(){
             this.$parent.revise();
-          }
+          },
+        res(){
+          this.$api.good.resGoodList('/good/resGoodList',this.addForm)
+              .then(res => {
+                location. reload();
+                this.$parent.revise();
+                console.log("添加按钮大成功：",res);
+                return new Promise((resolve,reject)=>{  //若这里不手动设置一个promise，那么.then返回的就是一个空的（undefind）
+                  let a=false;
+                  resolve("马上获取权限");
+                  if(a){
+                    reject("出错了");
+                  }
+                })
+              })
+
+        },
+
+
+      },
+      mounted() {
+          console.log(this.data);
+        this.addForm = this.$store.getters.getGoodInf[this.data];
       }
+
     }
 </script>
 
