@@ -14,7 +14,7 @@
 .Content_Com{
     width: 80%;
     height: 95%;
-    background-color: darkcyan;
+    background-color: white;
     float: left;
 }
 </style>
