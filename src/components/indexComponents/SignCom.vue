@@ -27,11 +27,12 @@
 
                 this.$api.login.login("/login",this.SignData)
                     .then(res=>{
-                        console.log("返回结果",res.token);
+                        // console.log("返回结果",res.token);
                         sessionStorage.setItem("token",res.token);
+                        sessionStorage.setItem("ms_username",this.SignData.username);
                         this.$api.menu.findNavTree("menu/findNavTree",{"userName":this.SignData.username})
                             .then(res=>{
-                                console.log("菜单树"+res);
+                                // console.log("菜单树"+res);
                                 this.$store.dispatch({
                                     type:"setNavTree",
                                     data:res
@@ -44,21 +45,33 @@
                                         reject("出错了");
                                     }
                                 })
-                            }).then(res=>{
+                            })
+                            .then(res=>{
                             console.log(res);
-                            this.$api.sys_user.findPermissions("user/findPermissions",{"userName":res})
-                        });
+                            // this.$api.sys_user.findPermissions("user/findPermissions",{"userName":res})
+                            });
+
+                            this.$api.user.getGUserList("/getUserList")
+                                  .then(res=>{
+                                    this.userList=res;
+                                    console.log("返回UserList",this.userList);
+                                    // console.log(this.userList.length);
+                                    // sessionStorage.setItem("usernum",this.userList.length)
+                                      this.$store.commit(
+                                          "setUserNum",this.userList.length
+                                      )
+                                      console.log("asdasd");
+                                  })
+
                         this.$router.push('/home');
 
                     }).catch(err=>{
                     console.log(err);
                     this.$router.push("/");
                 });
+            },
+          }
 
-
-
-            }
-        }
     }
 </script>
 
