@@ -5,22 +5,23 @@
 
 <script>
 
-  import footView from "./views/footView";
+import footView from "./views/footView";
 
-  export default {
-    name:"App",
-    components:{
-      // LoginView,
-      footView
-    }
+export default {
+  name: "App",
+  components: {
+    // LoginView,
+    footView,
   }
+}
 </script>
 
 <style lang="scss">
-  * {
-    margin: 0;
-    padding: 0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -41,7 +42,8 @@ nav {
     }
   }
 }
-  .index{
-    display: none;
-  }
+
+.index {
+  display: none;
+}
 </style>
