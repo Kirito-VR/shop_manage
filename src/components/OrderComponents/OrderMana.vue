@@ -248,6 +248,7 @@ export default {
       document.getElementById("modifyTable").style.display = "none";
     },
   },
+  
 }
 </script>
 
