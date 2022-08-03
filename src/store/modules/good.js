@@ -1,11 +1,19 @@
 export default {
     state:{
-        goodInf:[]
+        goodInf:[],
+        indexGood:{
+            GoodNum:0
+        }
     },
     mutations:{
         setGoodInf(state,goodInf){
             state.goodInf = goodInf;
         },
+        setGoodNum(state, perms) {
+            console.log("给首页商品数复制",perms);
+            state.indexGood.GoodNum = perms;
+
+        }
     },
     actions: {
         setGoodInf(ctx, payload) {
@@ -17,6 +25,10 @@ export default {
     getters: {
         getGoodInf(state) {
             return state.goodInf
+        },
+        getGoodNum(state){
+            return state.indexGood.GoodNum;
         }
+
     }
 }

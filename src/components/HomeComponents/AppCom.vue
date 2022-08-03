@@ -37,7 +37,7 @@
                     <div class="grid-content grid-con-3">
                       <i class="el-icon-s-goods grid-con-icon"></i>
                       <div class="grid-cont-right">
-                        <div class="grid-num">5000</div>
+                        <div class="grid-num">{{GoodNum}}</div>
                         <div>商品数量</div>
                       </div>
                     </div>
@@ -78,13 +78,15 @@
           const role = "超级管理员";
           const userNum= this.$store.getters.getUserNum;
           const OrderNum=this.$store.getters.getOrderNum;
+          const GoodNum=this.$store.getters.getGoodNum;
 
 
           return {
             name,
             role,
             userNum,
-            OrderNum
+            OrderNum,
+            GoodNum
           }
         },
 

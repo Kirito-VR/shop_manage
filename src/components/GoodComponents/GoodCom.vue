@@ -176,7 +176,6 @@
               .then(res => {
                 this.selList=res;
                 console.log("返回的：",res)
-                //this.$store.commit('setGoodInf',res);
                 return new Promise((resolve,reject)=>{  //若这里不手动设置一个promise，那么.then返回的就是一个空的（undefind）
                   let a=false;
                   resolve("马上获取权限");
@@ -187,10 +186,7 @@
               })
           this.selStyle=!this.selStyle;
           this.formStyle=!this.formStyle;
-
         }
-
-
       },
 
       mounted:function () {
