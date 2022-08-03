@@ -11,21 +11,20 @@
                     <div class="grid-content grid-con-1">
                       <i class="el-icon-user-solid grid-con-icon"></i>
                       <div class="grid-cont-right">
-                        <div class="grid-num">{{ user }}</div>
+                        <div class="grid-num">{{ userNum }}</div>
                         <div>用户数量</div>
                       </div>
                     </div>
                   </router-link>
-
                 </el-card>
               </el-col>
               <el-col :span="8">
                 <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                  <router-link to="/home/Order">
-                    <div class="grid-content grid-con-2">
+                  <router-link to="/home/Order" style=" text-decoration: none;">
+                    <div class="grid-content grid-con-2" >
                       <i class="el-icon-message-solid grid-con-icon"></i>
                       <div class="grid-cont-right">
-                        <div class="grid-num">321</div>
+                        <div class="grid-num">{{OrderNum}}</div>
                         <div>订单数量</div>
                       </div>
                     </div>
@@ -34,13 +33,15 @@
               </el-col>
             <el-col :span="8">
               <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                <div class="grid-content grid-con-3">
-                  <i class="el-icon-s-goods grid-con-icon"></i>
-                  <div class="grid-cont-right">
-                    <div class="grid-num">5000</div>
-                    <div>商品数量</div>
-                  </div>
-                </div>
+                <router-link to="/home/Good" style=" text-decoration: none;">
+                    <div class="grid-content grid-con-3">
+                      <i class="el-icon-s-goods grid-con-icon"></i>
+                      <div class="grid-cont-right">
+                        <div class="grid-num">5000</div>
+                        <div>商品数量</div>
+                      </div>
+                    </div>
+                </router-link>
               </el-card>
             </el-col>
           </el-row>
@@ -75,13 +76,15 @@
         data() {
           const name = sessionStorage.getItem("ms_username");
           const role = "超级管理员";
-          const user= this.$store.getters.getUserNum;
+          const userNum= this.$store.getters.getUserNum;
+          const OrderNum=this.$store.getters.getOrderNum;
 
 
           return {
             name,
             role,
-            user,
+            userNum,
+            OrderNum
           }
         },
 
