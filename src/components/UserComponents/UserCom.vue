@@ -1,68 +1,114 @@
 <template>
-  <div>这是一个UserCom  负责修改
+  <div>
     <br/>
     <br/>
-    <label>用户人数：{{userList.length}}</label>
-    <input type="text" id="search" v-model="username"> <button @click="search()" class="searchButton">名称搜索</button>
-    <!--      创建一个表，用于管理用户信息-->
+    <label class="number-label">用户人数：{{userList.length}}</label>
+      <span class="search-span">
+        <input type="text" id="search" v-model="username">
+      <el-button @click="search()" >搜索</el-button>
+      </span>
+
+<!--    <button @click="search()" class="searchButton">名称搜索</button>-->
     <br/>
     <br/>
-    <table class="userTable">
-      <tr>
-        <th>编号</th>
-        <th>名称</th>
-        <th>密码</th>
-        <th>手机号码</th>
-        <th>地址</th>
-        <th>操作</th>
-      </tr>
-      <tr v-for="(user,idx) in userList" :key="user.userID">
-        <td>{{user.userID}}</td>
-        <td>{{user.userNick}}</td>
-        <td>{{user.userPassword}}</td>
-        <td>{{user.userPhoneNumber}}</td>
-        <td>{{user.userAddress}}</td>
-        <el-button @click="changeUser(idx)">修改信息</el-button>
-        <el-button @click="deleteUser(idx)">删除用户</el-button>
-        <el-button @click="imformation(idx)">购物历史</el-button>
-      </tr>
-    </table>
+    <el-table
+        :data="userList"
+        height="450">
+      <el-table-column
+          prop="id"
+          label="用户编号"
+          width="120">
+      </el-table-column>
+      <el-table-column
+          prop="nickname"
+          label=" 用户名称"
+          width="150">
+      </el-table-column>
+      <el-table-column
+          prop="password"
+          label="密码"
+          width="130">
+      </el-table-column>
+      <el-table-column
+          prop="mobile"
+          label="手机号码"
+          width="150"
+          align="center">
+      </el-table-column>
+      <el-table-column
+          prop="birthday"
+          label="生日"
+          align="center"
+          width="100">
+      </el-table-column>
+      <el-table-column
+          prop="userLevel"
+          label="等级"
+          align="center"
+          width="50">
+      </el-table-column>
+      <el-table-column
+          prop="lastLoginTime"
+          label="上次登录时间"
+          align="center"
+          width="155">
+      </el-table-column>
+      <el-table-column
+          prop="deleted"
+          label="已删除"
+          align="center"
+          width="90">
+      </el-table-column>
+      <el-table-column
+      label="操作"
+      width="200"
+      align="center">
+        <template v-slot="scope">
+          <el-button @click="changeUser(scope.$index)" >编辑</el-button>
+          <el-button @click="deleteUser(scope.$index)" class="delete-button">删除</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column
+       label="更多"
+      align="center">
+      <template v-slot="scope">
+        <el-button @click="imformation(scope.$index)" class="purchase-history">购买历史</el-button></template>
+      </el-table-column>
+    </el-table>
   </div>
-  <!--//修改用户界面-->
-  <el-dialog title="修改用户信息！！！" v-model="ChangedialogFormVisible" width="400px">
+
+  <el-dialog title="修改用户信息" v-model="ChangedialogFormVisible" custom-class="change-dialog">
     <el-form :model="form">
-      <el-form-item label="编号:" >
-        <span>{{form.userID}}</span>
+      <el-form-item label="编号: " >
+        <span>{{form.id}}</span>
       </el-form-item>
-      <el-form-item label="名称:" >
-        <!--        <input></input>-->
-        <el-input v-model="form.userNick" ></el-input>
+      <el-form-item label="名称: " >
+        <el-input v-model="form.id" class="input-type"></el-input>
       </el-form-item>
-      <el-form-item label="密码:" >
-        <el-input v-model="form.userPassword"></el-input>
+    <el-form-item label="密码:" >
+        <el-input v-model="form.password" class="input-type"></el-input>
       </el-form-item>
       <el-form-item label="号码:" >
-        <el-input v-model="form.userPhoneNumber"></el-input>
+        <el-input v-model="form.mobile" class="input-type"></el-input>
       </el-form-item>
-      <el-form-item label="地址:" >
-        <el-input v-model="form.userAddress"></el-input>
+      <el-form-item label="生日:" >
+        <el-input v-model="form.birthday" class="input-type"></el-input>
       </el-form-item>
     </el-form>
     <div  class="dialog-footer">
-      <!--      添加函数-->
+            <!--      添加函数-->
       <el-button @click="ChangedialogFormVisible = false">取 消</el-button>
       <el-button type="primary" @click="changeUserToServe()">确 定</el-button>
-    </div>
+      </div>
   </el-dialog>
-
   <!--删除用户提示界面-->
-  <el-dialog title="删除用户???" v-model="DeletedialogFormVisible" width="360px">
+  <el-dialog title="删除用户" v-model="DeletedialogFormVisible" custom-class="delete-dialog">
     <el-form :model="form">
       <el-form-item label="编号:">
-        <span>{{form.userID}}</span>
+        <span>{{form.id}}</span>
       </el-form-item>
       <el-form-item label="名称:">
-        <span>{{form.userNick}}</span>
+        <span>{{form.nickname}}</span>
       </el-form-item>
     </el-form>
     <div  class="dialog-footer">
@@ -74,7 +120,7 @@
 </template>
 
 <script>
-// import { Loading } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 export default {
   name: "UserCom",
   mounted:function () {
@@ -82,6 +128,10 @@ export default {
     this.getUsers();
   },
   methods:{
+    //定义查看购物历史函数
+    imformation(idx){
+      this.$router.push({path:'/home/Info',query:{key:this.userList[idx].id}});
+    },
     //定义延时函数
     //定义获取用户函数
     getUsers(){
@@ -108,7 +158,6 @@ export default {
       this.$api.user.getUserListBysearch("/getUserListBySearch",{"username":this.username})
           .then(res=>{
             this.userList=res;
-            // console.log(res);
           }).catch(err=>{//错误未设置
         console.log(err);
       });
@@ -122,11 +171,7 @@ export default {
     },
     //赋值函数,方便展示在提示框
     userListToForm(idx){
-      this.form.userNick=this.userList[idx].userNick;
-      this.form.userID=this.userList[idx].userID;
-      this.form.userPhoneNumber=this.userList[idx].userPhoneNumber;
-      this.form.userAddress=this.userList[idx].userAddress;
-      this.form.userPassword=this.userList[idx].userPassword;
+      this.form=this.userList[idx];
     },
     //  定义修改函数与服务器进行交互函数
     changeUserToServe(){
@@ -136,15 +181,10 @@ export default {
         text: '加载中,请等待',//显示在加载图标下方的加载文案
         spinner: 'el-icon-loading',//自定义加载图标类名
         background: 'rgba(0, 0, 0, 0.8)',//遮罩层颜色
-        // target: document.querySelector('')//loading覆盖的dom元素节点
       });
       this.$api.user.changeUser("/changeUser",this.form).then(res=>{
             console.log(res);
-            this.userList[this.updateIdx].userNick=this.form.userNick;
-            this.userList[this.updateIdx].userID=this.form.userID;
-            this.userList[this.updateIdx].userPhoneNumber=this.form.userPhoneNumber;
-            this.userList[this.updateIdx].userAddress=this.form.userAddress;
-            this.userList[this.updateIdx].userPassword=this.form.userPassword;
+            this.userList[this.updateIdx]=this.form;
             // 延时
             setTimeout(() => {
               loading.close();
@@ -164,25 +204,10 @@ export default {
       this.DeletedialogFormVisible=true;
     },
     deleteUserConfirm(){
-      const loading = this.$loading({
-        lock: true,//lock的修改符--默认是false
-        text: '加载中,请等待',//显示在加载图标下方的加载文案
-        spinner: 'el-icon-loading',//自定义加载图标类名
-        background: 'rgba(0, 0, 0, 0.8)',//遮罩层颜色
-      });
-      this.$api.user.deleteUser("/deleteUser",this.form).then(res=>{
-            console.log(res);
-            setTimeout(() => {
-              loading.close();
-            }, 1000);
-            loading.close();
-            this.userList.splice(this.DeleteIdx,1);
-            //可添加修改成功提示窗口
-          }
-      ).catch(err=>{
-        console.log(err);
-        //可添加删除失败提示窗口
-      });
+      this.form.deleted=1;
+      console.log(this.form.deleted);
+      this.userList[this.DeleteIdx]=this.form;
+      this.changeUserToServe();
       this.DeletedialogFormVisible=false;
     }
   },
@@ -204,16 +229,14 @@ export default {
         userAddress:'',
       },
     }
-
   }
 
 }
 </script>
 
-<style scoped>
+<style>
 .userTable{
-  background-color: darkgray;
-  width:1000px;
+  width:1300px;
 }
 .userTable td,th{
   /*border: 1px solid beige;*/
@@ -227,5 +250,40 @@ export default {
 }
 body {
   margin: 0;
+}
+.delete-button{
+  color: white;
+  background-color:RGB(245,108,108);
+}
+.purchase-history{
+  color: white;
+  background-color: #42b983;
+}
+.change-dialog{
+  width: 400px;
+  height: 550px;
+}
+.delete-dialog{
+  width: 400px;
+  height: 250px;
+}
+.input-type{
+  position: relative;
+  left: 0px;
+  text-align: left;
+}
+.input-type input.el-input__inner{
+  border:none;
+}
+el-button{
+  text-align: center;
+}
+.number-label{
+  position: relative;
+  left: -550px;
+}
+.search-span{
+  position:relative;
+  left: -300px;
 }
 </style>
