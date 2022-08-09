@@ -1,6 +1,6 @@
 <template>
   <div class="button">
-        <input type="text" placeholder="输入名称查询商品" v-model="this.selForm.name">
+        <input type="text" placeholder="输入名称查询商品" v-model="this.selForm.goods_name">
         <button @click="select">查询</button>
         <button @click="add">新增商品</button>
   </div>
@@ -8,22 +8,31 @@
     <table>
       <caption>商品信息</caption>
       <tr>
-        <th>编号</th>
-        <th>名称</th>
-        <th>价格</th>
-        <th>库存</th>
-        <th>商品描述</th>
-        <th>图片</th>
+        <th>商品编号</th>
+        <th>商品名称</th>
+
+        <th>商品简介</th>
+        <th>是否上架</th>
+
+        <th>是否新品首发</th>
+        <th>是否人气推荐</th>
+        <th>商品单位</th>
+        <th>专柜价格</th>
+        <th>零售价格</th>
+
         <th></th>
       </tr>
       <tr v-for="(selLi,index) in selList" :key="selLi.id">
         <!--          <th><input type="checkbox"></th>-->
-        <td>{{ selLi.id }}</td>
-        <td>{{ selLi.name }}</td>
-        <td>{{ selLi.price }}</td>
-        <td>{{ selLi.stock }}</td>
-        <td>{{ selLi.descripe }}</td>
-        <td>{{ selLi.imPath }}</td>
+        <td>{{ selLi.good_sn }}</td>
+        <td>{{ selLi.goods_name}}</td>
+        <td>{{ selLi.brief }}</td>
+        <td>{{ selLi.is_on_sale }}</td>
+        <td>{{ selLi.is_new }}</td>
+        <td>{{ selLi.is_hot }}</td>
+        <td>{{ selLi.unit }}</td>
+        <td>{{ selLi.counter_price }}</td>
+        <td>{{ selLi.retail_price }}</td>
         <td>
           <button class="revise" @click="revise(index)">修改商品信息</button>
         </td>
@@ -41,25 +50,45 @@
       <table>
         <caption>商品信息</caption>
         <tr>
-          <th>编号</th>
-          <th>名称</th>
-          <th>价格</th>
-          <th>库存</th>
-          <th>商品描述</th>
-          <th>图片</th>
+<!--          <th>编号</th>-->
+          <th>商品编号</th>
+          <th>商品名称</th>
+<!--          <th>商品所属类目ID</th>-->
+<!--          <th>品牌id</th>-->
+<!--          <th>商品宣传图片</th>-->
+<!--          <th>商品关键字</th>-->
+          <th>商品简介</th>
+          <th>是否上架</th>
+<!--          <th>排序</th>-->
+<!--          <th>商品页面图片</th>-->
+<!--          <th>商品分享朋友圈图片</th>-->
+          <th>是否新品首发</th>
+          <th>是否人气推荐</th>
+          <th>商品单位</th>
+          <th>专柜价格</th>
+          <th>零售价格</th>
+
           <th></th>
         </tr>
         <tr v-for="(goodLi,index) in goodInf" :key="goodLi.id">
 <!--          <th><input type="checkbox"></th>-->
-          <td>{{ goodLi.id }}</td>
-          <td>{{ goodLi.name }}</td>
-          <td>{{ goodLi.price }}</td>
-          <td>{{ goodLi.stock }}</td>
-          <td>{{ goodLi.descripe }}</td>
-          <td>{{ goodLi.imPath }}</td>
+<!--          <td>{{ goodLi.id }}</td>-->
+          <td>{{ goodLi.good_sn }}</td>
+          <td>{{ goodLi.goods_name}}</td>
+
+          <td>{{ goodLi.brief }}</td>
+          <td>{{ goodLi.is_on_sale }}</td>
+
+          <td>{{ goodLi.is_new }}</td>
+          <td>{{ goodLi.is_hot }}</td>
+          <td>{{ goodLi.unit }}</td>
+          <td>{{ goodLi.counter_price }}</td>
+          <td>{{ goodLi.retail_price }}</td>
+
+
+
           <td>
             <button class="revise" @click="revise(index)">修改商品信息</button>
-
           </td>
           <td>
             <button @click="del(index)">删除商品</button>
@@ -104,21 +133,27 @@
             goodList:[],
             selList:[],
             infList:[],
-            addForm:{
-              id:"",
-              name:"",
-              price:"",
-              stock:"",
-              descripe:"",
-              imPath:""
-            },
+
             selForm:{
               id:"1",
-              name:"",
-              price:"1",
-              stock:"1",
-              descripe:"1",
-              imPath:"1"
+              goods_sn:"1",
+              goods_name:"",
+              category_id:"1",
+              brand_id:"1",
+              gallery:"1",
+              keywords:"1",
+              brief:"1",
+              is_on_sale:"1",
+              sort_order:"1",
+              pic_url:"1",
+              share_url:"1",
+              is_new:"1",
+              is_hot:"1",
+              unit:"1",
+              counter_price:"1",
+              retail_price:"1",
+              detail:"1",
+              deleted:"1",
             },
 
             addStyle:false,
