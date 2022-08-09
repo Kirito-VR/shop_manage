@@ -7,7 +7,6 @@
         <input type="text" id="search" v-model="username">
       <el-button @click="search()" >搜索</el-button>
       </span>
-
 <!--    <button @click="search()" class="searchButton">名称搜索</button>-->
     <br/>
     <br/>
