@@ -2,15 +2,41 @@
       <div class="revise" >
         <label>编号</label><input type="text"  v-model="this.addForm.id" disabled>
         <br>
-        <label>名称</label><input type="text"  v-model="this.addForm.name">
+        <label>商品编号</label><input type="text"  v-model="this.addForm.goods_sn" placeholder="商品编号">
         <br>
-        <label>价格</label><input type="text"  v-model="this.addForm.price">
+        <label>商品名称</label><input type="text"  v-model="this.addForm.goods_name" placeholder="商品编号不能为空">
         <br>
-        <label>库存</label><input type="text" v-model="this.addForm.stock">
+        <label>商品所属类目ID</label><input type="text"  v-model="this.addForm.category_id">
         <br>
-        <label>描述</label><input type="text" v-model="this.addForm.descripe">
+        <label>品牌id</label><input type="text"  v-model="this.addForm.brand_id">
         <br>
-        <label>图片</label><input type="text" v-model="this.addForm.imPath">
+        <label>商品宣传图片</label><input type="file" >
+        <br>
+        <label>商品关键字</label><input type="text" v-model="this.addForm.keywords">
+        <br>
+        <label>商品简介</label><input type="text" v-model="this.addForm.brief">
+        <br>
+        <label>是否上架</label><input type="text" v-model="this.addForm.is_on_sale" placeholder="1为上架0为不上架">
+        <br>
+        <label>排序</label><input type="text" v-model="this.addForm.sort_order">
+        <br>
+        <label>商品页面商品图片</label><input type="file" >
+        <br>
+        <label>商品分享朋友圈图片</label><input type="file" >
+        <br>
+        <label>是否标为新品首发</label><input type="text" v-model="this.addForm.is_new" placeholder="1为标记0为不标记">
+        <br>
+        <label>是否设为人气推荐</label><input type="text" v-model="this.addForm.is_hot" placeholder="1为设置成推荐0为不设置">
+        <br>
+        <label>单位</label><input type="text" v-model="this.addForm.unit" placeholder="例如：”件“">
+        <br>
+        <label>专柜价格</label><input type="text" v-model="this.addForm.counter_price">
+        <br>
+        <label>销售价格</label><input type="text" v-model="this.addForm.retail_price">
+        <br>
+        <label>商品详细介绍</label><input type="text" v-model="this.addForm.detail">
+        <br>
+        <label>逻辑删除</label><input type="text" v-model="this.addForm.deleted" placeholder="干嘛用的暂时不知道">
         <br>
         <button class="res" @click="res">确认修改</button>
         <br>
@@ -24,11 +50,25 @@
       data(){
           return{
             addForm:{
-              name:"",
-              price:"",
-              stock:"",
-              descripe:"",
-              imPath:""
+              id:"",
+              goods_sn:"",
+              goods_name:"",
+              category_id:"",
+              brand_id:"",
+              gallery:"",
+              keywords:"",
+              brief:"",
+              is_on_sale:"",
+              sort_order:"",
+              pic_url:"",
+              share_url:"",
+              is_new:"",
+              is_hot:"",
+              unit:"",
+              counter_price:"",
+              retail_price:"",
+              detail:"",
+              deleted:"",
             },
 
           }

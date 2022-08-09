@@ -2,16 +2,9 @@
   <div class="del" >
     <label>编号</label><input type="text"  v-model="this.addForm.id" placeholder="商品编号不能为空">
     <br>
-    <label>名称</label><input type="text"  v-model="this.addForm.name">
+    <label>名称</label><input type="text"  v-model="this.addForm.goods_name">
     <br>
-    <label>价格</label><input type="text"  v-model="this.addForm.price">
-    <br>
-    <label>库存</label><input type="text" v-model="this.addForm.stock">
-    <br>
-    <label>描述</label><input type="text" v-model="this.addForm.descripe">
-    <br>
-    <label>图片</label><input type="text" v-model="this.addForm.imPath">
-    <br>
+
     <button class="delInf" @click="delInf">确认删除</button>
     <br>
     <button class="newX" @click="cancel">取消</button>
@@ -25,11 +18,24 @@ export default {
     return{
       addForm:{
         id:"",
-        name:"",
-        price:"",
-        stock:"",
-        descripe:"",
-        imPath:""
+        goods_sn:"",
+        goods_name:"",
+        category_id:"",
+        brand_id:"",
+        gallery:"",
+        keywords:"",
+        brief:"",
+        is_on_sale:"",
+        sort_order:"",
+        pic_url:"",
+        share_url:"",
+        is_new:"",
+        is_hot:"",
+        unit:"",
+        counter_price:"",
+        retail_price:"",
+        detail:"",
+        deleted:"",
       },
 
     }
