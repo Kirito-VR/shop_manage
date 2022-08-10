@@ -60,11 +60,12 @@
       </el-table-column>
       <el-table-column
       label="操作"
-      width="200"
+      width="250"
       align="center">
         <template v-slot="scope">
           <el-button @click="changeUser(scope.$index)" >编辑</el-button>
           <el-button @click="deleteUser(scope.$index)" class="delete-button">删除</el-button>
+          <el-button @click="niDeleteUser(scope.$index)" class="rollback-button">恢复</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -116,6 +117,23 @@
       <el-button type="primary" @click="deleteUserConfirm()">确 定</el-button>
     </div>
   </el-dialog>
+
+<!--恢复用户提示界面-->
+  <el-dialog title="恢复用户" v-model="niDeletedialogFormVisible" custom-class="delete-dialog">
+    <el-form :model="form">
+      <el-form-item label="编号:">
+        <span>{{form.id}}</span>
+      </el-form-item>
+      <el-form-item label="名称:">
+        <span>{{form.nickname}}</span>
+      </el-form-item>
+    </el-form>
+    <div  class="dialog-footer">
+      <!--      添加函数-->
+      <el-button @click="niDeletedialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="NiDeleteUserConfirm()">确 定</el-button>
+    </div>
+  </el-dialog>
 </template>
 
 <script>
@@ -146,7 +164,7 @@ export default {
             setTimeout(() => {
               loading.close();
             }, 1000);
-            console.log("返回",this.userList);
+            // console.log("返回",this.userList);
           }).catch(err=>{//错误信息为设置
         console.log(err);
       });
@@ -196,6 +214,7 @@ export default {
       });
       this.ChangedialogFormVisible = false;
     },
+
     //定义删除函数
     deleteUser(idx){
       this.userListToForm(idx);
@@ -208,7 +227,22 @@ export default {
       this.userList[this.DeleteIdx]=this.form;
       this.changeUserToServe();
       this.DeletedialogFormVisible=false;
+    },
+  //  定义恢复函数
+    niDeleteUser(idx){
+      this.userListToForm(idx);
+      this.DeleteIdx=idx;
+      this.niDeletedialogFormVisible=true;
+    },
+    //恢复确定函数
+    NiDeleteUserConfirm(){
+      this.form.deleted=0;
+      console.log(this.form.deleted);
+      this.userList[this.DeleteIdx]=this.form;
+      this.changeUserToServe();
+      this.niDeletedialogFormVisible=false;
     }
+
   },
   data(){
     return{
@@ -218,6 +252,7 @@ export default {
       updateIdx:'',
       ChangedialogFormVisible: false,
       DeletedialogFormVisible:false,
+      niDeletedialogFormVisible:false,
       loading: false,
       //修改表单
       form: {
@@ -284,5 +319,9 @@ el-button{
 .search-span{
   position:relative;
   left: -300px;
+}
+.rollback-button{
+  color:white;
+  background-color: #42b983;
 }
 </style>
