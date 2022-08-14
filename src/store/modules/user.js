@@ -5,7 +5,6 @@ export default {
             userNum:0
         }
     },
-
     mutations:{
         setPerms(state,perms){
             state.perms = perms;
@@ -14,17 +13,13 @@ export default {
         setUserNum(state, perms) {
             console.log("给首页用户复制",perms);
             state.indexInfo.userNum = perms;
-
         }
     },
     action:{
-
         setPerms(ctx,payload){
             console.log(payload.data);
             ctx.commit(payload.type,payload.data);
         },
-
-
     },
     getters:{
         getUserNum(state){

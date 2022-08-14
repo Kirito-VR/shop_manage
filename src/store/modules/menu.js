@@ -13,8 +13,6 @@ export default {
         异步：同时进行，不用等待；
          */
         setNavTree(ctx, payload) {
-            // console.log('载荷：', payload.data);
-            // console.log('type: ', payload.type)
             ctx.commit(payload.type, payload.data);//调用mutations的setNavTree
         }
     },
