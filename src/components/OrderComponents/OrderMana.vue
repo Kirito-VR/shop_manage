@@ -2,7 +2,7 @@
   <div class="OrderMana">
     这是一个OrderMana订单信息与管理模块
     <br>
-    <input id="queryKey" type="text" placeholder="请输入需要查询的订单编号" style="border-radius: 5px; width: 300px;"
+    <input id="queryKey" type="text" placeholder="请输入需要查询的订单编号" style="border-radius: 5px; width: 250px;"
            v-model="inputContent">
     <button class="findOrder" @click="findOrderId">查询</button>
     <button class="reloadButton"><a href="javascript:location.reload();">刷新页面</a></button>
@@ -442,7 +442,7 @@ tr {
 }
 
 #queryKey {
-  left: 310px;
+  left: 380px;
   position: absolute;
 }
 
@@ -459,5 +459,8 @@ tr {
 #modifyTable {
   float: bottom;
   background-color: aliceblue;
+}
+.divClose{
+margin-left: 30px;
 }
 </style>

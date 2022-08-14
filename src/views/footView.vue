@@ -11,7 +11,7 @@
 <style scoped>
     .foot{
         width: 100%;
-        height: 150px;
-        background-color: #2c3e50;
+        height: 100px;
+        background-color:azure;
     }
 </style>
