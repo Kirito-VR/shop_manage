@@ -1,14 +1,15 @@
 <template>
-  <div class="del" >
-    <label>编号</label><input type="text"  v-model="this.addForm.id" placeholder="商品编号不能为空">
-    <br>
-    <label>名称</label><input type="text"  v-model="this.addForm.goods_name">
-    <br>
-
-    <button class="delInf" @click="delInf">确认删除</button>
-    <br>
-    <button class="newX" @click="cancel">取消</button>
-  </div>
+  <el-dialog  v-model="ChangedialogFormVisible" >
+    <ul  class="infinite-list" style="overflow: auto">
+    <el-form-item label="商品名称:" >
+      <el-col :span="8">
+        <el-input type="text"  v-model="this.addForm.goods_name" ></el-input>
+      </el-col>
+    </el-form-item>
+        <el-button class="delInf" @click="delInf">确认删除</el-button>
+<!--        <el-button class="newX" @click="cancel">取消</el-button>-->
+    </ul>
+  </el-dialog  >
 </template>
 
 <script>
@@ -16,6 +17,7 @@ export default {
   name: "GoodChan",
   data(){
     return{
+      ChangedialogFormVisible:true,
       addForm:{
         id:"",
         goods_sn:"",
@@ -40,8 +42,8 @@ export default {
 
     }
   },
-  props:['data']
-  ,
+  props:['data'],
+
   computed:{
 
   },
@@ -51,7 +53,7 @@ export default {
           .then(res => {
             location. reload();
             this.$parent.del();
-            console.log("添加按钮大成功：",res);
+            console.log(res);
             return new Promise((resolve,reject)=>{  //若这里不手动设置一个promise，那么.then返回的就是一个空的（undefind）
               let a=false;
               resolve("马上获取权限");
@@ -69,7 +71,7 @@ export default {
 
   },
   mounted() {
-    console.log(this.data);
+    //console.log("给我整个这玩意", this.props.data);
     this.addForm = this.$store.getters.getGoodInf[this.data];
   }
 
@@ -77,10 +79,6 @@ export default {
 </script>
 
 <style scoped>
-.del{
-  width: 25%;
-  height: 200px;
-  background-color: darkgray;
-  float: left;
-}
+
+
 </style>
