@@ -7,7 +7,7 @@ const instance = axios.create({
         timeout:config.timeout
     }
 );
-
+// interceptors拦截器
 instance.interceptors.request.use(
     config=>{
         let token = sessionStorage.getItem("token");

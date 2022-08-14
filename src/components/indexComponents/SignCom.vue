@@ -60,8 +60,25 @@
                                       this.$store.commit(
                                           "setUserNum",this.userList.length
                                       )
-                                      console.log("asdasd");
                                   })
+
+                            this.$api.order.getOrderList("/order/getOrderList")
+                                .then(res => {
+                                  // vuex（状态管理）
+                                  console.log("后台返回查询的orderList:", res);
+                                  this.orderList = res;// 方便遍历
+                                  this.$store.commit(
+                                      "setOrderNum", this.orderList.length
+                                  )
+                                })
+                            this.$api.good.getGoodList('/good/getGoodList')
+                                .then(res => {
+                                  this.goodList=res;
+                                  // console.log("商品数量",this.goodList.length)
+                                  this.$store.commit(
+                                      "setGoodNum", this.goodList.length
+                                  )
+                                })
 
                         this.$router.push('/home');
 
