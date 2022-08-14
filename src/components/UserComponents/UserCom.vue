@@ -224,7 +224,7 @@ export default {
     deleteUserConfirm(){
       this.form.deleted=1;
       console.log(this.form.deleted);
-      this.userList[this.DeleteIdx]=this.form;
+        this.userList[this.DeleteIdx]=this.form;
       this.changeUserToServe();
       this.DeletedialogFormVisible=false;
     },
