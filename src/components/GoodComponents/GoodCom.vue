@@ -25,13 +25,13 @@
             align="center"
             >
         </el-table-column>
-      <el-table-column
-          prop="gallery"
-          label="商品图片"
-          align="center"
-      >
-          <el-img :src="this.addForm.gallery" alt="" width="60px" height="60px"> </el-img>
-      </el-table-column>
+<!--      <el-table-column-->
+<!--          prop="gallery"-->
+<!--          label="商品图片"-->
+<!--          align="center"-->
+<!--      >-->
+<!--          <el-img :src="this.addForm.gallery" alt="" width="60px" height="60px"> </el-img>-->
+<!--      </el-table-column>-->
       <el-table-column
           prop="brief"
           label="商品简介"
