@@ -203,12 +203,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 <style scoped>
 .bottom-purchase{
   position: relative;
-  left: -700px;
+  left: -600px;
   top:35px;
 }
 .userName {
   position: relative;
-  left: -680px;
+  left: -600px;
 }
 .purchaseHistory{
   position: relative;

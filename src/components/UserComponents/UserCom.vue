@@ -314,7 +314,7 @@ el-button{
 }
 .number-label{
   position: relative;
-  left: -550px;
+  left: -400px;
 }
 .search-span{
   position:relative;

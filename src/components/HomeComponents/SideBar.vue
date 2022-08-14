@@ -95,11 +95,13 @@
         position: relative;
         width: 20%;
         height: 100%;
-        background-color: aliceblue;
+        background-color:aliceblue;
         float: left;
     }
     .SideList{
         /*position: relative;*/
+      text-decoration:none;
+      text-decoration:underline;
     }
     .SideList>li{
         width: 100%;
@@ -108,17 +110,22 @@
         padding-top: 15px;
         font-size: 18px;
         position: relative;
+        text-decoration:none;
+        text-decoration:underline;
+        list-style:none
     }
     .SideList>li>a{
         margin: 0;
         padding: 0;
         width: 100px;
         height: 80px;
-        border-bottom: 1px solid black;
-        background-color: cadetblue;
+        /*border-bottom: 1px solid black;*/
+        background-color: paleturquoise;
         /*padding-top: 15px;*/
         font-size: 18px;
         /*position: relative;*/
+      border-radius: 5px;
+        text-decoration:none
     }
     .itemUl{
         position: relative;
@@ -126,12 +133,16 @@
 
     .itemUl>li{
         /*position: relative;*/
-        width: 100%;
+        margin-left: 25%;
+        width: 50%;
         /*height: 80px;*/
-        border: 1px solid black;
-        background-color: #42b983;
+        /*border: 1px solid black;*/
+        border-radius: 10px;
+        background-color: honeydew;
         padding-top: 15px;
         font-size: 16px;
+        text-decoration:none;
+        list-style:none
 
     }
 
